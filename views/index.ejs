@@ -1,0 +1,73 @@
+<link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+
+<div style="width: 640px; height: 480">
+  <canvas 
+    id="canvas"
+    width="640"
+    height="480"
+    style="position: absolute; top: 0; left: 0; z-index: 2;"
+  ></canvas>
+
+  <img
+    style="position: absolute; top: 0; left: 0; z-index: 1;"
+    id="source"
+    src="/frame.png"
+    width="640"
+    height="480"
+  />
+</div>
+
+<code>
+  <pre id="data"></pre>
+</code>
+
+<script>
+  var predictions = JSON.parse('<%- JSON.stringify(predictions) %>')
+
+  function getData() {
+    fetch("/detect").then((response) => response.json()).then((data) => {
+      predictions = data;
+    });
+
+    document.getElementById("source").src = "/frame.png?" + new Date().getTime();
+  }
+  
+  const canvas = document.getElementById("canvas");
+  const context = canvas.getContext('2d')
+  const image = document.getElementById("source");
+
+  function clearCanvas() {
+    context.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  function drawBounds() {
+    predictions.forEach((prediction) => {
+      // Get prediction results
+      const [x, y, width, height] = prediction.bbox;
+      const text = prediction.class;
+
+      // Set styling
+      context.strokeStyle = "red";
+      context.font = "12px Space Mono";
+      context.fillStyle = "red";
+
+      // Draw rectangle and text
+      context.beginPath();
+      context.fillText(text, x + 5, y + 20);
+      context.rect(x, y, width, height);
+      context.stroke();
+    });
+  }
+  
+  function drawData() {
+    document.getElementById("data").innerText = JSON.stringify(predictions);
+  }
+  
+  setInterval(() => {
+    getData()
+    clearCanvas()
+    drawData()
+    drawBounds()
+    
+  }, 100);
+</script>

@@ -1,0 +1,93 @@
+{
+  "lockfile-version": 0,
+  "manifest": {
+    "hook": {},
+    "install": {
+      "nodejs_latest": {
+        "pkg-path": "nodejs_latest"
+      }
+    },
+    "options": {
+      "systems": [
+        "aarch64-darwin"
+      ]
+    },
+    "registry": {
+      "defaults": {
+        "subtrees": null
+      },
+      "inputs": {
+        "nixpkgs": {
+          "from": {
+            "owner": "NixOS",
+            "ref": "release-23.11",
+            "repo": "nixpkgs",
+            "type": "github"
+          },
+          "subtrees": [
+            "legacyPackages"
+          ]
+        }
+      },
+      "priority": [
+        "nixpkgs"
+      ]
+    },
+    "vars": {}
+  },
+  "packages": {
+    "aarch64-darwin": {
+      "nodejs_latest": {
+        "attr-path": [
+          "legacyPackages",
+          "aarch64-darwin",
+          "nodejs_latest"
+        ],
+        "info": {
+          "broken": false,
+          "description": "Event-driven I/O framework for the V8 JavaScript engine",
+          "license": "MIT",
+          "pname": "nodejs",
+          "unfree": false,
+          "version": "21.6.2"
+        },
+        "input": {
+          "attrs": {
+            "lastModified": 1711353271,
+            "narHash": "sha256-rsuGjg8JXhCutLzV7RVhyMGPGCpxPUJ0IvpCFNEWzdQ=",
+            "owner": "NixOS",
+            "repo": "nixpkgs",
+            "rev": "707aeb42b1daf39bd7646390b30d0a71f279b2ad",
+            "type": "github"
+          },
+          "fingerprint": "0e4dc86c2bc1251b5ae3a9ba79bdd48d68d23c77b917b40cff351a0f4a17a37f",
+          "url": "github:NixOS/nixpkgs/707aeb42b1daf39bd7646390b30d0a71f279b2ad"
+        },
+        "priority": 5
+      }
+    }
+  },
+  "registry": {
+    "defaults": {
+      "subtrees": null
+    },
+    "inputs": {
+      "nixpkgs": {
+        "from": {
+          "lastModified": 1711353271,
+          "narHash": "sha256-rsuGjg8JXhCutLzV7RVhyMGPGCpxPUJ0IvpCFNEWzdQ=",
+          "owner": "NixOS",
+          "repo": "nixpkgs",
+          "rev": "707aeb42b1daf39bd7646390b30d0a71f279b2ad",
+          "type": "github"
+        },
+        "subtrees": [
+          "legacyPackages"
+        ]
+      }
+    },
+    "priority": [
+      "nixpkgs"
+    ]
+  }
+}
