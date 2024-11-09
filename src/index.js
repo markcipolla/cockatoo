@@ -64,6 +64,10 @@ app.get("/", (req, res) => {
   });
 })
 
+app.get("/health", (req, res) => {
+  res.send("✅ Server is running");
+});
+
 app.use(express.static('public'))
 
 app.get("/detect", async (req, res) => {
