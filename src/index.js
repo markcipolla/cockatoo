@@ -56,7 +56,7 @@ setInterval(async () => {
       console.log("❌ Error", error);
     }
   }
-}, 200);
+}, 500);
 
 app.get("/", (req, res) => {
   res.render('index', {
