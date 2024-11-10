@@ -36,7 +36,7 @@ const stream = await cam.getStreamUri({protocol:'RTSP'})
 
 console.log('✅ Input from', stream.uri);
 
-const video = new rtsp.FFMpeg({input: stream.uri, resolution: '640x480', quality: 8});
+const video = new rtsp.FFMpeg({input: stream.uri, resolution: '1920x1080', quality: 8});
 video.on('start', () => console.log('✅ Stream started'));
 video.on('data', data => {
   fs.writeFileSync('./public/frame.png', Buffer.from(data, 'base64'));
@@ -56,7 +56,7 @@ setInterval(async () => {
       console.log("❌ Error", error);
     }
   }
-}, 500);
+}, 1000);
 
 app.get("/", (req, res) => {
   res.render('index', {
